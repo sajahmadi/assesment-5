@@ -26,16 +26,14 @@ module.exports = {
  createCity: (req, res) => {
         let {name, rating, countryId} = req.body
        
-        sequelize.query( `INSERT INTO cities (name, rating, country_id`)
-        values ('${name}','${rating}','${countryId})`))
+        sequelize.query(`INSERT INTO cities (name, rating, country_id)
+        values('${name}','${rating}','${countryId}')`)
         .then(dbRes => res.status(200).send(dbRes[0]))
         
         .catch(err => console.log(err))
     },
-  };
-
-
-  deleteCity: (req, res) => {
+  
+    deleteCity: (req, res) => {
     const { id } = req.params
         sequelize.query( `DELETE FROM cities WHERE city_id = '${id}'`)
         //what is this error for
